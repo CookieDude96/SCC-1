@@ -13,17 +13,17 @@ pipeline {
         stage('Build') {
             steps {
                 dir(PROJECT_DIR) {
-                    sh './gradlew clean build'
+                    sh './gradlew build'
                 }
             }
         }
-        stage('Test') {
-            steps {
-                dir(PROJECT_DIR) {
-                    sh './gradlew test'
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         dir(PROJECT_DIR) {
+        //             sh './gradlew test'
+        //         }
+        //     }
+        // }
 
     }
 }
