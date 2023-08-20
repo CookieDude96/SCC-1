@@ -1,21 +1,29 @@
 pipeline {
     agent any
 
+    environment {
+        PROJECT_DIR = '/Users/koonqi/Library/CloudStorage/OneDrive-UniversitiTunkuAbdulRahman/UTAR/Semester 8/Software Construction And Configuration/Assignment/Assignment 1/SCC-1'
+    }
+
+    tools {
+        gradle "gradle"
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                dir(PROJECT_DIR) {
+                    sh './gradlew clean build'
+                }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                dir(PROJECT_DIR) {
+                    sh './gradlew test'
+                }
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+
     }
 }
